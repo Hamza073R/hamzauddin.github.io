@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamza Uddin | FinTech & Compliance Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent-navy: #1a365d;
+            --accent-blue: #2563eb;
+            --accent-light: #e0e7ff;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-navy: #38bdf8;
+            --accent-blue: #60a5fa;
+            --accent-light: #1e3a8a;
+            --border-color: #334155;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-navy);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 2rem 3rem 2rem;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: var(--accent-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h2 {
+            font-size: 1.3rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero p {
+            max-width: 800px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-navy);
+            color: #ffffff !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-navy);
+            margin: 3rem 0 1.5rem 0;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-blue);
+            border-radius: 2px;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .role-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .company-name {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .date-badge {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background-color: var(--accent-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .card-bullets {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .card-bullets li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .card-bullets li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .bullet-label {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-group {
+            margin-bottom: 1rem;
+        }
+
+        .skill-group-title {
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .card-header { flex-direction: column; gap: 0.3rem; }
+            .nav-links { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">HAMZA UDDIN</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <section id="about" class="hero">
+            <h1>Hamza Uddin</h1>
+            <h2>BSc FinTech & Data Analytics Candidate</h2>
+            <p>
+                FinTech and Data Analytics student with a dedicated focus on compliance, financial crime prevention, and KYC/AML processes[cite: 1]. Experienced in managing sensitive data under strict confidentiality standards, executing structured verification checks, and managing financial oversight[cite: 1]. Adept at leveraging data analytics to optimize internal workflows, maintain audit accuracy, and communicate complex requirements to varied stakeholders[cite: 1].
+            </p>
+            
+            <div class="contact-info">
+                <a href="mailto:Hamzauddinlive@gmail.com" class="contact-item">
+                    <i class="fa-solid fa-envelope"></i> Hamzauddinlive@gmail.com[cite: 1]
+                </a>
+                <span class="contact-item">
+                    <i class="fa-solid fa-phone"></i> +44 7460 080741[cite: 1]
+                </span>
+                <span class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i> London, UK[cite: 1]
+                </span>
+            </div>
+
+            <a href="Hamza_Uddin_CV.docx" download class="btn">
+                <i class="fa-solid fa-file-arrow-down"></i> Download CV (.docx)
+            </a>
+        </section>
+
+        <section id="experience">
+            <h3 class="section-title">Professional Experience</h3>
+            <div class="timeline">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="role-title">Product Specialist[cite: 1]</div>
+                            <div class="company-name">Apple[cite: 1]</div>
+                        </div>
+                        <span class="date-badge">Aug 2025 – Present[cite: 1]</span>
+                    </div>
+                    <ul class="card-bullets">
+                        <li><span class="bullet-label">Data Privacy & Compliance:</span> Administer sensitive customer identity, account, and payment data daily, maintaining 100% compliance with strict company security policies, confidentiality rules, and data protection standards[cite: 1].</li>
+                        <li><span class="bullet-label">Verification & Security:</span> Execute structured identity verification procedures and high-precision security checks for all transactions and account modifications, cultivating a sharp focus on procedural accuracy[cite: 1].</li>
+                        <li><span class="bullet-label">Stakeholder Communication:</span> Translate technical, financial, and procedural requirements into clear, accessible guidance for diverse customer audiences and internal team members[cite: 1].</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="role-title">Insight Programme[cite: 1]</div>
+                            <div class="company-name">Cazenove Capital (Schroders)[cite: 1]</div>
+                        </div>
+                        <span class="date-badge">July 2025[cite: 1]</span>
+                    </div>
+                    <ul class="card-bullets">
+                        <li><span class="bullet-label">Risk & Regulatory Insights:</span> Evaluated how client KYC data, risk mitigation frameworks, and business intelligence tools support decision-making in a top-tier regulated financial institution[cite: 1].</li>
+                        <li><span class="bullet-label">Data-Driven Analysis:</span> Ranked 1st among 25+ candidates in a competitive strategy challenge, conducting independent data-driven research and delivering findings under tight deadlines[cite: 1].</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="role-title">Digital Industry Micro-Internship[cite: 1]</div>
+                            <div class="company-name">University of Westminster x Practera[cite: 1]</div>
+                        </div>
+                        <span class="date-badge">June 2025[cite: 1]</span>
+                    </div>
+                    <ul class="card-bullets">
+                        <li><span class="bullet-label">Process Automation & Optimization:</span> Researched and designed a no-code workflow automation solution projected to save the client over 6 hours per week while reducing manual handling errors and improving process tracking[cite: 1].</li>
+                        <li><span class="bullet-label">Strategic Reporting:</span> Co-authored a 16-page market and competitor analysis report within a cross-functional team, translating raw data into actionable risk and strategic recommendations for senior management[cite: 1].</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="role-title">Project Manager[cite: 1]</div>
+                            <div class="company-name">Adventure All Stars (Youth Charity)[cite: 1]</div>
+                        </div>
+                        <span class="date-badge">Nov 2024 – March 2025[cite: 1]</span>
+                    </div>
+                    <ul class="card-bullets">
+                        <li><span class="bullet-label">Financial Oversight & Audit Reconciliation:</span> Managed over £20,000 in grant funding, maintaining zero-variance tracking across budgets, expense logging, receipt reconciliation, and final financial reports[cite: 1].</li>
+                        <li><span class="bullet-label">Governance & Process Improvement:</span> Standardized project documentation and operational tracking metrics—improving reporting accuracy, record-keeping efficiency, and alignment across diverse external stakeholders[cite: 1].</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="education">
+            <h3 class="section-title">Education & Certifications</h3>
+            <div class="grid-2">
+                
+                <div class="card">
+                    <div class="role-title">BSc FinTech with Data Analytics[cite: 1]</div>
+                    <div class="company-name">University of Westminster[cite: 1]</div>
+                    <p style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
+                        <strong>Timeline:</strong> 2024 – 2027<br>[cite: 1]
+                        <strong>Grade:</strong> Predicted 2:1 or above[cite: 1]<br>
+                        <strong>Key Modules:</strong> Data Analytics, Financial Technology, Business Intelligence, Digital Innovation[cite: 1]
+                    </p>
+                    <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border-color);">
+                    <div class="role-title">A-Levels[cite: 1]</div>
+                    <div class="company-name">Mulberry Academy Shoreditch[cite: 1]</div>
+                    <p style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
+                        <strong>Timeline:</strong> 2022 – 2024<br>[cite: 1]
+                        <strong>Subjects:</strong> Economics, Business, Law[cite: 1]
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="role-title" style="margin-bottom: 1rem;">Certifications</div>
+                    <ul class="card-bullets" style="margin-top:0;">
+                        <li>
+                            <span class="bullet-label">AmplifyME Finance Accelerator</span><br>[cite: 1]
+                            Endorsed by Morgan Stanley & UBS (Sep 2024)[cite: 1]
+                        </li>
+                        <li>
+                            <span class="bullet-label">Bloomberg Market Concepts (BMC)</span><br>[cite: 1]
+                            Issued Mar 2025[cite: 1]
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills">
+            <h3 class="section-title">Technical & Compliance Competencies</h3>
+            <div class="card">
+                
+                <div class="skill-group">
+                    <span class="skill-group-title">Compliance & Governance</span>
+                    <div class="tag-container">
+                        <span class="tag">KYC / AML Alignment</span>
+                        <span class="tag">Structured Verification</span>
+                        <span class="tag">Identity Checks</span>
+                        <span class="tag">Confidential Data Handling</span>
+                        <span class="tag">Financial Record Reconciliation</span>
+                        <span class="tag">Audit Precision</span>
+                    </div>
+                </div>
+
+                <div class="skill-group" style="margin-top: 1.5rem;">
+                    <span class="skill-group-title">Data & Analytical Tools</span>
+                    <div class="tag-container">
+                        <span class="tag">Bloomberg Terminal</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">AI-Assisted Analytics</span>
+                        <span class="tag">Workflow Automation</span>
+                        <span class="tag">Document Review</span>
+                        <span class="tag">Market Research</span>
+                    </div>
+                </div>
+
+                <div class="skill-group" style="margin-top: 1.5rem;">
+                    <span class="skill-group-title">Communication & Software</span>
+                    <div class="tag-container">
+                        <span class="tag">Stakeholder Management</span>
+                        <span class="tag">Technical & Report Writing</span>
+                        <span class="tag">Microsoft Excel</span>
+                        <span class="tag">Microsoft Word</span>
+                        <span class="tag">Microsoft Outlook</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Hamza Uddin. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                themeIcon.className = 'fa-solid fa-moon';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fa-solid fa-sun';
+            }
+        });
+    </script>
+</body>
+</html>
